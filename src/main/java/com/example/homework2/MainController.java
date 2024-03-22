@@ -16,7 +16,6 @@ public class MainController {
 
     @GetMapping(value = {"v1/contribution", "v1/contribution/{all}"})
     public List<Contribution> getContributions(@PathVariable(value = "all" , required = false) boolean all){
-        //IS ALWAYS REQUIRED IDK WHY
         if (all) return contributionService.getAllContributions();
         return contributionService.getVisibleContributions();
     }
