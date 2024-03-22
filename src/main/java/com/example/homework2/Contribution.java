@@ -47,4 +47,7 @@ public class Contribution {
 
     //endregion
 
+    public String toSavingFormat(){
+        return this.contribution + "\t" + this.user+ "\t" + this.contributionId+ "\t" + this.isVisible ;
+    }
 }
