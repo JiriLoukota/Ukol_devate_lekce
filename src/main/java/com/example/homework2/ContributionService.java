@@ -16,8 +16,9 @@ public class ContributionService {
     public void addContribution(Contribution contribution) throws Exception{
         if(!idExists(contribution.getContributionId())){
             contributions.add(contribution);
-            try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(""))){
+            try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files/contributions.txt",  true))){
                 bufferedWriter.append(contribution.toSavingFormat());
+                bufferedWriter.newLine();
             }catch (Exception ignored){}
 
         }
@@ -39,7 +40,7 @@ public class ContributionService {
 
     private void loadFile(){
         contributions.clear();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(""))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("files/contributions.txt"))) {
             String line;
             while(( line= bufferedReader.readLine()) != null){
                 String[] parts = line.split("\t");
