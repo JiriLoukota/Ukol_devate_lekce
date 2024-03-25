@@ -40,8 +40,8 @@ public class ContributionService {
     private void loadFile(){
         contributions.clear();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(""))) {
-            while(bufferedReader.readLine() != null){
-                String line = bufferedReader.readLine();
+            String line;
+            while(( line= bufferedReader.readLine()) != null){
                 String[] parts = line.split("\t");
                 boolean visible = parts[3].equals("true");
                 contributions.add(new Contribution(parts[0], parts[1], Integer.parseInt(parts[2]), visible));
